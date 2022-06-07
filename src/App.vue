@@ -45,6 +45,7 @@ export default {
         background: productions[randomP].background,
       },
       sections: [],
+      loadingSections: false,
     };
   },
 
@@ -71,24 +72,11 @@ export default {
       }, 1000);
     }
 
-    let loading = false;
-
     // verifica se ocorreu um scroll de página suficiente para
     // carregar mais seções de produções recomendadas
-    document.addEventListener('scroll', () => {
-      if (!loading && ((document.body.clientHeight - (window.innerHeight * 2)) < window.scrollY)) {
-        loading = true;
+    setInterval(this.loadMoreSections, 100);
 
-        this.sections.push({
-          name: 'Lorem Ipsum',
-          cards: this.randomProductions(),
-        });
-
-        setTimeout(() => {
-          loading = false;
-        }, 2000);
-      }
-    });
+    document.addEventListener('scroll', this.loadMoreSections);
   },
 
   methods: {
@@ -107,6 +95,22 @@ export default {
       console.log(newArr);
 
       return newArr;
+    },
+
+    loadMoreSections() {
+      // eslint-disable-next-line
+      if (!this.loadingSections && ((document.body.clientHeight - (window.innerHeight * 2)) < window.scrollY)) {
+        this.loadingSections = true;
+
+        this.sections.push({
+          name: 'Lorem Ipsum',
+          cards: this.randomProductions(),
+        });
+
+        setTimeout(() => {
+          this.loadingSections = false;
+        }, 500);
+      }
     },
   },
 };
