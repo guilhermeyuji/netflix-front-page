@@ -119,11 +119,18 @@ export default {
 <style lang="scss">
 body {
   margin: 0px;
+  overflow-x: hidden;
   background-color: #141414;
 }
 
 * {
   font-family: 'Open Sans', sans-serif;
   font-size: 14px;
+}
+
+@media screen and (max-width: 768px) {
+  body {
+    margin-top: 6rem;
+  }
 }
 </style>

@@ -76,6 +76,7 @@ export default {
   display: flex;
   align-items: flex-end;
   box-sizing: border-box;
+  z-index: -1;
 
   &:before {
     content: "";
@@ -218,4 +219,9 @@ export default {
   }
 }
 
+@media screen and (max-width: 768px) {
+  .frontPageBanner {
+    display: none;
+  }
+}
 </style>

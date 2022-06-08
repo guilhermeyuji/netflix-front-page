@@ -74,6 +74,7 @@ header {
   width: 100%;
   z-index: 1000;
   box-sizing: border-box;
+  top: 0;
 
   &.smooth {
     transition: background-color .5s;
@@ -119,4 +120,11 @@ header {
 .searchBar {
   margin-left: auto;
 }
+
+@media screen and (max-width: 768px) {
+  header > ul {
+    display: none;
+  }
+}
+
 </style>

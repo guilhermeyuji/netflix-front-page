@@ -29,12 +29,40 @@ export default {
 </script>
 
 <style lang="scss">
-.section {
-  color: white;
+.frontPageBanner + .section {
+  margin-top: -10rem;
 }
 
-.row {
-    white-space: nowrap;
+.section {
+  color: white;
+
+  > h3 {
+    font-size: 1.7rem;
+    margin: 1rem 4rem;
+    color: #d5d5d5;
+  }
+
+  + .section {
+    margin-top: 4rem;
+  }
+
+  .card-content {
+    display: none;
+  }
+
+  .row {
+    gap: 5px;
     display: flex;
+  }
+}
+
+@media screen and (max-width: 768px) {
+  .frontPageBanner + .section {
+    margin-top: 0;
+  }
+
+  .section > h3 {
+    margin: 1rem 2rem;
+  }
 }
 </style>
